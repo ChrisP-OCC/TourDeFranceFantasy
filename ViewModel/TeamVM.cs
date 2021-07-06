@@ -66,7 +66,7 @@ namespace ViewModel
 
             foreach (RiderResultVM _rider in CurrentStage.Riders)
             {
-                _rider.NumberOfTeams = Parent.RiderCountsPerStage[Parent.StageNumber][_rider.RiderName];
+                _rider.NumberOfTeams = Parent.RiderCountsPerStage[Parent.StageNumber][TourVM.TrimOutRiderType(_rider.RiderName)];
             }
         }
 

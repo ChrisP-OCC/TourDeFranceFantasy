@@ -201,10 +201,10 @@ namespace ViewModel
                 {
                     foreach (RiderResultVM _rider in _team.Stages[_stageIndex].Riders)
                     {
-                        if(!RiderCountsPerStage[_stageIndex].ContainsKey(_rider.RiderName))
-                            RiderCountsPerStage[_stageIndex].Add(_rider.RiderName, 1);
+                        if(!RiderCountsPerStage[_stageIndex].ContainsKey(TrimOutRiderType(_rider.RiderName)))
+                            RiderCountsPerStage[_stageIndex].Add(TrimOutRiderType(_rider.RiderName), 1);
                         else
-                            RiderCountsPerStage[_stageIndex][_rider.RiderName]++;
+                            RiderCountsPerStage[_stageIndex][TrimOutRiderType(_rider.RiderName)]++;
                     }
                 }
             }
@@ -227,7 +227,7 @@ namespace ViewModel
             OnPropertyChanged(nameof(StageScores));        
         }
 
-        public string TrimOutRiderType(string input)
+        public static string TrimOutRiderType(string input)
         {
             return input.Replace("DS", "").Replace("AR", "").Replace("PC", "").Replace("KM", "").Replace("GC", "").Trim();
         }
